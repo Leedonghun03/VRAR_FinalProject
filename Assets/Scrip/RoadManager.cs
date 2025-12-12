@@ -12,6 +12,9 @@ public class RoadManager : MonoBehaviour
     private float nextSpawnZ = 0f;
     private Queue<RoadTile> segments = new Queue<RoadTile>();
     private GameObject nextPrefab = null;
+
+    private int specialCooldown = 0;
+    private const int minCooldown = 2;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,8 +96,46 @@ public class RoadManager : MonoBehaviour
             return safeList[Random.Range(0, safeList.Count)];
         }
 
-        // 그 외는 그냥 랜덤
-        int idx = Random.Range(0, roadPrefabs.Length);
-        return roadPrefabs[idx];
+        // 쿨다운 중이면 일반 패턴만
+        if (specialCooldown > 0)
+        {
+            specialCooldown--;
+            return GetNormalTile();
+        }
+
+        if (Random.value < 0.3f)
+        {
+            GameObject specialTile = GetSpecialTile();
+            specialCooldown = minCooldown;
+            return specialTile;
+        }
+
+        return GetNormalTile();
+    }
+
+    GameObject GetNormalTile()
+    {
+        List<GameObject> normalList = new List<GameObject>();
+        foreach (var p in roadPrefabs)
+        {
+            var t = p.GetComponent<RoadTile>();
+            if (t.tileType == RoadTileType.Straight || t.tileType == RoadTileType.TrafficLight)
+                normalList.Add(p);
+        }
+        return normalList[Random.Range(0, normalList.Count)];
+    }
+
+    GameObject GetSpecialTile()
+    {
+        List<GameObject> specialList = new List<GameObject>();
+        foreach (var p in roadPrefabs)
+        {
+            var t = p.GetComponent<RoadTile>();
+            if (t.tileType == RoadTileType.LeftOpen ||
+                t.tileType == RoadTileType.FourLane ||
+                t.tileType == RoadTileType.BusStop)
+                specialList.Add(p);
+        }
+        return specialList[Random.Range(0, specialList.Count)];
     }
 }
