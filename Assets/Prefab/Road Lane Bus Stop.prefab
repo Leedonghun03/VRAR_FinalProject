@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoadTile
   tileType: 4
+  length: 15
   forwardSpawnPoints: []
   sideSpawnPoints: []
   busSpawnPoints:

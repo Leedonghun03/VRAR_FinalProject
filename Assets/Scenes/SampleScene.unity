@@ -216,63 +216,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &811162108
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 369273515952621213, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_Name
-      value: Road Lane_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
 --- !u!1 &845252795
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,63 +385,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
   carPrefab: {fileID: 6721860663023794127, guid: 1385a099088977948a75bbac8aa6671e, type: 3}
   busPrefab: {fileID: 8641508338241254208, guid: adcf5ac7d7c13a3458924b907c6af2fd, type: 3}
---- !u!1001 &1524790331
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 369273515952621213, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_Name
-      value: Road Lane_01 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546756713094223305, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
 --- !u!1 &1584613769
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +435,6 @@ MonoBehaviour:
   - {fileID: 8094753181677946921, guid: e1d35189ded299d4aa3449fb105c564e, type: 3}
   - {fileID: 369273515952621213, guid: 8aa63557953eaad4596cdac83f09a6dc, type: 3}
   - {fileID: 1899111424533177735, guid: 00fc87e429449ab4db7a749479e4930b, type: 3}
-  - {fileID: 1255048193190258675, guid: f797f304efe7c454db9b211a502b5848, type: 3}
   segmentLength: 10
   startSegments: 6
   despawnDistance: 40
@@ -562,5 +447,3 @@ SceneRoots:
   - {fileID: 1144131696}
   - {fileID: 1584613770}
   - {fileID: 845252796}
-  - {fileID: 811162108}
-  - {fileID: 1524790331}

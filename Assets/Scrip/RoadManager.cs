@@ -5,12 +5,13 @@ public class RoadManager : MonoBehaviour
 {
     public Transform player;
     public GameObject[] roadPrefabs; // 1~5번 타일 프리팹들 배열로 넣기
-    public float segmentLength = 20f;
+    public float segmentLength = 10f;
     public int startSegments = 6;
     public float despawnDistance = 40f;
 
     private float nextSpawnZ = 0f;
     private Queue<RoadTile> segments = new Queue<RoadTile>();
+    private GameObject nextPrefab = null;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,18 +43,39 @@ public class RoadManager : MonoBehaviour
     
     void SpawnSegment(bool isStart)
     {
-        GameObject prefab = ChooseRandomTile(isStart);
-
+        if(!nextPrefab)
+            nextPrefab = ChooseRandomTile(isStart);
+    
+        GameObject prefab = nextPrefab;
+        
+        // 현재 nextSpawnZ 위치에 타일 생성
         Vector3 pos = new Vector3(0f, 0f, nextSpawnZ);
         GameObject obj = Instantiate(prefab, pos, Quaternion.identity);
 
         RoadTile tile = obj.GetComponent<RoadTile>();
+        if (!tile)
+        {
+            Debug.Log("No tile found");
+            return;
+        }
+        
         segments.Enqueue(tile);
 
         // 타일이 생성될 때 차량 스폰도 같이 세팅
-        TrafficManager.Instance.SetupTrafficOnTile(tile);
+        if (TrafficManager.Instance)
+            TrafficManager.Instance.SetupTrafficOnTile(tile);
 
-        nextSpawnZ += segmentLength;
+        nextPrefab = ChooseRandomTile(false);
+        RoadTile nextTile = nextPrefab.GetComponent<RoadTile>();
+        
+        float spacing;
+        if (tile.tileType == RoadTileType.BusStop || (nextTile && nextTile.tileType == RoadTileType.BusStop))
+            spacing = 15.0f;
+        else
+            spacing = segmentLength;
+
+        // 생성된 타일의 길이만큼 다음 스폰 위치 증가
+        nextSpawnZ += spacing;
     }
     
     GameObject ChooseRandomTile(bool isStart)
