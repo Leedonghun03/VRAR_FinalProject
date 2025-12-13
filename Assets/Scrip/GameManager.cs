@@ -61,15 +61,11 @@ public class GameManager : MonoBehaviour
         timeRemaining -= Time.deltaTime;
         
         if (uiManager)
-        {
             uiManager.UpdateTimer(timeRemaining);
-        }
 
         // 시간이 다 되면 게임 클리어!
         if (timeRemaining <= 0f)
-        {
             GameClear();
-        }
     }
 
     public void TakeDamage()
@@ -79,14 +75,10 @@ public class GameManager : MonoBehaviour
         health--;
         
         if (uiManager)
-        {
             uiManager.UpdateHealth(health);
-        }
 
         if (health <= 0)
-        {
             GameOver();
-        }
     }
 
     void GameOver()
@@ -96,15 +88,11 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 이동 정지
         if (player)
-        {
             player.StopMovement();
-        }
 
         // UI 표시
         if (uiManager)
-        {
             uiManager.ShowGameOver();
-        }
     }
 
     void GameClear()
@@ -114,15 +102,11 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 이동 정지
         if (player)
-        {
             player.StopMovement();
-        }
 
         // UI 표시
         if (uiManager)
-        {
             uiManager.ShowGameClear();
-        }
     }
 
     public void RestartGame()
