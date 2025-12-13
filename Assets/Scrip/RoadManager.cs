@@ -119,7 +119,7 @@ public class RoadManager : MonoBehaviour
         foreach (var p in roadPrefabs)
         {
             var t = p.GetComponent<RoadTile>();
-            if (t.tileType == RoadTileType.Straight || t.tileType == RoadTileType.TrafficLight)
+            if (t.tileType == RoadTileType.Straight)
                 normalList.Add(p);
         }
         return normalList[Random.Range(0, normalList.Count)];

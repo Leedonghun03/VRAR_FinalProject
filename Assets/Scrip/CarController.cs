@@ -27,7 +27,7 @@ public class CarController : MonoBehaviour
         Transform target = waypoints[currentIndex];
         Vector3 dir = (target.position - transform.position).normalized;
         transform.position += dir * (speed * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5f * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 20f * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target.position) < 0.5f)
         {

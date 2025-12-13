@@ -18,91 +18,88 @@ public class TrafficManager : MonoBehaviour
         switch (tile.tileType)
         {
             case RoadTileType.Straight:
-            case RoadTileType.TrafficLight:
                 SetupForwardCars(tile);
                 break;
 
             case RoadTileType.LeftOpen:
                 SetupForwardCars(tile);
-                SetupSideCars(tile);   // 옆길에서 회전해서 진입
+                SetupPathCars(tile.sideCarPaths);
                 break;
 
             case RoadTileType.FourLane:
-                SetupFourLanePattern(tile);
+                SetupPathCars(tile.fourLaneCarPaths);
                 break;
 
             case RoadTileType.BusStop:
-                SetupBus(tile);
+                SetupBuses(tile);
                 break;
         }
     }
 
+    // 직진 차량 (웨이포인트 없음)
     void SetupForwardCars(RoadTile tile)
     {
+        if (tile.forwardSpawnPoints == null) return;
+
         foreach (var sp in tile.forwardSpawnPoints)
         {
             if (Random.value < 0.4f) // 40% 확률로 스폰
             {
-                SpawnCar(sp.position, sp.rotation, false);
+                SpawnCar(sp.position, sp.rotation, false, null);
             }
         }
     }
 
-    void SetupSideCars(RoadTile tile)
+    // 경로가 있는 차량 (사이드, 4차선 등 - 웨이포인트 사용)
+    void SetupPathCars(RoadTile.CarPath[] paths, float spawnChance = 0.6f)
     {
-        foreach (var sp in tile.sideSpawnPoints)
+        if (paths == null) return;
+
+        foreach (var path in paths)
         {
-            if (Random.value < 0.6f)
+            if (Random.value < spawnChance)
             {
-                SpawnCar(sp.position, sp.rotation, true); // sideCar = true
+                SpawnCar(
+                    path.spawnPoint.position, 
+                    path.spawnPoint.rotation, 
+                    true,  // isFromSide = true (웨이포인트 사용)
+                    path.waypoints
+                );
             }
         }
     }
 
-    void SetupFourLanePattern(RoadTile tile)
+    // 버스 (웨이포인트 사용)
+    void SetupBuses(RoadTile tile)
     {
-        // 예시: 왼, 왼, 오, 왼, 오 느낌의 패턴
-        // laneSpawnPoints[0] = 제일 왼쪽, [3] = 제일 오른쪽 이런 식으로 배치했다고 가정
-        var spawns = tile.forwardSpawnPoints;
-        if (spawns == null || spawns.Length == 0) return;
+        if (tile.busCarPaths == null) return;
 
-        // 간단한 랜덤 패턴 예시
-        // ex) L L R L R 느낌 내기 (0 = 왼, 3 = 오른쪽)
-        int[] pattern = new int[] { 0, 0, 3, 0, 3 };
-
-        int count = Mathf.Min(pattern.Length, spawns.Length);
-        for (int i = 0; i < count; i++)
+        foreach (var path in tile.busCarPaths)
         {
-            if (Random.value < 0.7f) // 70% 정도는 스폰되게
+            // 버스는 항상 생성 (확률 없음)
+            GameObject busObj = Instantiate(
+                busPrefab, 
+                path.spawnPoint.position, 
+                path.spawnPoint.rotation
+            );
+
+            BusCar bus = busObj.GetComponent<BusCar>();
+            if (bus)
             {
-                Transform lanePoint = spawns[pattern[i]];
-                SpawnCar(lanePoint.position, lanePoint.rotation, false);
+                bus.Init(path.waypoints);  // 웨이포인트 전달
             }
         }
     }
 
-    void SetupBus(RoadTile tile)
-    {
-        if (tile.busSpawnPoints == null || tile.busSpawnPoints.Length == 0)
-            return;
-
-        Transform busPoint = tile.busSpawnPoints[0];
-        GameObject busObj = Instantiate(busPrefab, busPoint.position, busPoint.rotation);
-
-        BusCar bus = busObj.GetComponent<BusCar>();
-        if (bus != null)
-        {
-            bus.Init(busPoint); // 정차 → 출발 로직 안에서 처리
-        }
-    }
-
-    GameObject SpawnCar(Vector3 pos, Quaternion rot, bool isFromSide)
+    // 차량 생성
+    GameObject SpawnCar(Vector3 pos, Quaternion rot, bool useWaypoints, Transform[] waypoints)
     {
         GameObject obj = Instantiate(carPrefab, pos, rot);
         CarController car = obj.GetComponent<CarController>();
-        if (car != null)
+        if (car)
         {
-            car.isFromSide = isFromSide;
+            car.isFromSide = useWaypoints;
+            car.waypoints = waypoints;
         }
         return obj;
     }
