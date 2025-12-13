@@ -16,7 +16,6 @@ public class RoadManager : MonoBehaviour
     private int specialCooldown = 0;
     private const int minCooldown = 2;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         for (int i = 0; i < startSegments; i++)
@@ -25,7 +24,6 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 새 타일 생성
@@ -79,6 +77,12 @@ public class RoadManager : MonoBehaviour
             return;
         }
         
+        // 초반 시작 구간은 차량 스폰 안되도록 설정
+        if (isStart)
+        {
+            tile.trafficSpawned = true;  // 차량 스폰 비활성화
+        }
+        
         segments.Enqueue(tile);
 
         // 타일 생성 시 차량 스폰은 하지 않음 (Update에서 거리 체크 후 스폰)
@@ -97,14 +101,14 @@ public class RoadManager : MonoBehaviour
     
     GameObject ChooseRandomTile(bool isStart)
     {
-        // 시작 구간은 너무 빡세지 않게 직진/4차선 위주
+        // 시작 구간은 너무 빡세지 않게 직진만
         if (isStart)
         {
             List<GameObject> safeList = new List<GameObject>();
             foreach (var p in roadPrefabs)
             {
                 var t = p.GetComponent<RoadTile>();
-                if (t.tileType == RoadTileType.Straight || t.tileType == RoadTileType.FourLane)
+                if (t.tileType == RoadTileType.Straight)
                     safeList.Add(p);
             }
             return safeList[Random.Range(0, safeList.Count)];

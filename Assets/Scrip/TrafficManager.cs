@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TrafficManager : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class TrafficManager : MonoBehaviour
                 break;
 
             case RoadTileType.FourLane:
-                SetupPathCars(tile.fourLaneCarPaths);
+                // 4차선은 좌/우 한쪽만 선택
+                SetupFourLaneCars(tile);
                 break;
 
             case RoadTileType.BusStop:
@@ -62,8 +64,35 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
+    // 4차선 전용: 좌/우 한쪽만 랜덤 선택
+    void SetupFourLaneCars(RoadTile tile)
+    {
+        if (tile.fourLaneCarPaths == null || tile.fourLaneCarPaths.Length == 0) 
+            return;
+
+        // 경로를 좌측/우측으로 분리
+        List<RoadTile.CarPath> leftPaths = new List<RoadTile.CarPath>();
+        List<RoadTile.CarPath> rightPaths = new List<RoadTile.CarPath>();
+
+        foreach (var path in tile.fourLaneCarPaths)
+        {
+            // 스폰 포인트의 X 위치로 좌/우 판단 (0보다 작으면 좌측, 크면 우측)
+            if (path.spawnPoint.position.x < 0)
+                leftPaths.Add(path);
+            else
+                rightPaths.Add(path);
+        }
+
+        // 50% 확률로 좌측 또는 우측 선택
+        bool useLeft = Random.value < 0.5f;
+        List<RoadTile.CarPath> selectedPaths = useLeft ? leftPaths : rightPaths;
+
+        // 선택된 쪽의 경로만 차량 생성
+        SetupPathCars(selectedPaths.ToArray(), 0.6f);
+    }
+
     // 경로가 있는 차량 (사이드, 4차선 등 - 웨이포인트 사용)
-    void SetupPathCars(RoadTile.CarPath[] paths, float spawnChance = 0.6f)
+    void SetupPathCars(RoadTile.CarPath[] paths, float spawnChance = 1.0f)
     {
         if (paths == null) return;
 
