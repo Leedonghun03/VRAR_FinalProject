@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1310078597475682505, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1310078597475682505, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -271,8 +271,64 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6999167101809759130, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764390917}
+    - targetCorrespondingSourceObject: {fileID: 6999167101809759130, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764390918}
   m_SourcePrefab: {fileID: 100100000, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
+--- !u!1 &764390916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6999167101809759130, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
+  m_PrefabInstance: {fileID: 764390915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764390917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764390916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89de5a7fa4a3f2944bf9973a326480a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  forwardSpeed: 13
+  invincibilityTime: 2
+  playerRenderer: {fileID: 764390919}
+--- !u!143 &764390918
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764390916}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &764390919 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8725576644181098084, guid: 92ebadb53bc58784590df277dcb4ebdd, type: 3}
+  m_PrefabInstance: {fileID: 764390915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144131695
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,8 +31,7 @@ public class VRButtonController : MonoBehaviour
     public void OnClick()
     {
         Debug.Log("UI OnClick");
-        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), 
-            ExecuteEvents.pointerClickHandler);
+        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
     }
 
     // 버튼 초기화
@@ -47,8 +46,7 @@ public class VRButtonController : MonoBehaviour
     {
         Debug.Log("UI OnPointerEnter");
         isButtonPressed = true;
-        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), 
-            ExecuteEvents.pointerEnterHandler);
+        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerEnterHandler);
     }
 
     // Pointer Exit - 버튼에서 시선을 떼었을 때
@@ -56,7 +54,6 @@ public class VRButtonController : MonoBehaviour
     {
         Debug.Log("UI OnPointerExit");
         ResetButton();
-        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), 
-            ExecuteEvents.pointerExitHandler);
+        ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerExitHandler);
     }
 }

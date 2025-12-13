@@ -460,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2214355886575748785}
   - component: {fileID: 3941299464774068449}
+  - component: {fileID: 4045302450948763491}
   m_Layer: 0
   m_Name: Vehicle_Bus_color01_separate
   m_TagString: Untagged
@@ -504,3 +505,25 @@ MonoBehaviour:
   waypoints: []
   player: {fileID: 0}
   despawnDistance: 30
+--- !u!64 &4045302450948763491
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641508338241254208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 0d82ae0493e1c264bad0588fde0a3d8a, type: 3}

@@ -16,14 +16,10 @@ public class MainMenuManager : MonoBehaviour
     {
         // 버튼 이벤트 연결
         if (playButton)
-        {
             playButton.onClick.AddListener(StartGame);
-        }
 
         if (quitButton)
-        {
             quitButton.onClick.AddListener(QuitGame);
-        }
     }
 
     public void StartGame()

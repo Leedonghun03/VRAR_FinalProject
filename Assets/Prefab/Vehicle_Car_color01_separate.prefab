@@ -370,6 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855426624130704487}
   - component: {fileID: -4585014631961206296}
+  - component: {fileID: 3441813620791201030}
   m_Layer: 0
   m_Name: Vehicle_Car_color01_separate
   m_TagString: Untagged
@@ -412,6 +413,30 @@ MonoBehaviour:
   speed: 10
   isFromSide: 0
   waypoints: []
+  player: {fileID: 0}
+  despawnDistance: 30
+--- !u!64 &3441813620791201030
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721860663023794127}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 49fee4c5907e33545a3b2db2e9d66675, type: 3}
 --- !u!1 &7327073473769924597
 GameObject:
   m_ObjectHideFlags: 0
