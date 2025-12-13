@@ -499,6 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce57ed0ea8800548bbb2cff9e3f1e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusCar
-  waitTime: 0.5
+  waitTime: 0.2
   speed: 10
   waypoints: []
+  player: {fileID: 0}
+  despawnDistance: 30
