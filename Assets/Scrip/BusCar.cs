@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class BusCar : MonoBehaviour
 {
-    public float waitTime = 1f;      // 정차 시간
+    public float waitTime = 0.5f;      // 정차 시간
     public float speed = 8f;
-    public Transform[] waypoints;    // 승강장 → 도로 진입 경로
+    public Transform[] waypoints;    // 승강장 -> 도로 진입 경로
 
+    [HideInInspector] public Transform player;  // 플레이어 참조
+    public float despawnDistance = 30f;         // 플레이어 뒤로 이 거리만큼 멀어지면 삭제
+    
     private bool started = false;
     private float timer = 0f;
     private int currentIndex = 0;
@@ -17,6 +20,16 @@ public class BusCar : MonoBehaviour
 
     void Update()
     {
+        // 플레이어 뒤로 멀어지면 자동 삭제
+        if (player)
+        {
+            if (transform.position.z < player.position.z - despawnDistance)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        
         // 정차 중
         if (!started)
         {

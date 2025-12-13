@@ -4,10 +4,10 @@ using UnityEngine;
 public class RoadManager : MonoBehaviour
 {
     public Transform player;
-    public GameObject[] roadPrefabs; // 1~5번 타일 프리팹들 배열로 넣기
+    public GameObject[] roadPrefabs;
     public float segmentLength = 10f;
     public int startSegments = 6;
-    public float despawnDistance = 40f;
+    public float despawnDistance = 100f;
 
     private float nextSpawnZ = 0f;
     private Queue<RoadTile> segments = new Queue<RoadTile>();
@@ -28,11 +28,28 @@ public class RoadManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 새 타일 생성
         if (player.position.z + segmentLength * 2f > nextSpawnZ)
         {
             SpawnSegment(false);
         }
 
+        // 각 타일 체크하여 플레이어가 가까워지면 차량 스폰
+        foreach (var tile in segments)
+        {
+            if (!tile.trafficSpawned)
+            {
+                float dist = tile.transform.position.z - player.position.z;
+                if (dist < tile.spawnTriggerDistance)
+                {
+                    if (TrafficManager.Instance)
+                        TrafficManager.Instance.SetupTrafficOnTile(tile);
+                    tile.trafficSpawned = true;
+                }
+            }
+        }
+
+        // 오래된 타일 제거
         if (segments.Count > 0)
         {
             RoadTile first = segments.Peek();
@@ -64,10 +81,7 @@ public class RoadManager : MonoBehaviour
         
         segments.Enqueue(tile);
 
-        // 타일이 생성될 때 차량 스폰도 같이 세팅
-        if (TrafficManager.Instance)
-            TrafficManager.Instance.SetupTrafficOnTile(tile);
-
+        // 타일 생성 시 차량 스폰은 하지 않음 (Update에서 거리 체크 후 스폰)
         nextPrefab = ChooseRandomTile(false);
         RoadTile nextTile = nextPrefab.GetComponent<RoadTile>();
         

@@ -385,6 +385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
   carPrefab: {fileID: 6721860663023794127, guid: 1385a099088977948a75bbac8aa6671e, type: 3}
   busPrefab: {fileID: 8641508338241254208, guid: adcf5ac7d7c13a3458924b907c6af2fd, type: 3}
+  player: {fileID: 845252796}
+  forwardCarSpawnDistanceMin: 15
+  forwardCarSpawnDistanceMax: 25
 --- !u!1 &1584613769
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +440,7 @@ MonoBehaviour:
   - {fileID: 1899111424533177735, guid: 00fc87e429449ab4db7a749479e4930b, type: 3}
   segmentLength: 10
   startSegments: 6
-  despawnDistance: 40
+  despawnDistance: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

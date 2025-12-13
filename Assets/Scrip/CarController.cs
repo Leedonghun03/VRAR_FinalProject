@@ -6,10 +6,23 @@ public class CarController : MonoBehaviour
     public bool isFromSide;          // 옆에서 진입하는 타입인지
     public Transform[] waypoints;    // 회전 경로 (왼쪽 뚫린 길, 4차선 진입 등)
 
+    [HideInInspector] public Transform player;
+    public float despawnDistance = 30f; 
+    
     private int currentIndex = 0;
 
     void Update()
     {
+        // 플레이어 뒤로 멀어지면 자동 삭제
+        if (player)
+        {
+            if (transform.position.z < player.position.z - despawnDistance)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        
         if (waypoints != null && waypoints.Length > 0 && isFromSide)
         {
             // 사이드에서 들어와서 차선으로 합류하는 방식 (웨이포인트 따라가기)

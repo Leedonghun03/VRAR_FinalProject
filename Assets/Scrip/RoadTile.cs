@@ -14,6 +14,10 @@ public class RoadTile : MonoBehaviour
 {
     public RoadTileType tileType;
     
+    // 차량 스폰 관리
+    [HideInInspector] public bool trafficSpawned = false;
+    public float spawnTriggerDistance = 30f; // 플레이어가 이 거리 안에 들어오면 차량 스폰
+    
     // 차량 스폰 포인트들
     public Transform[] forwardSpawnPoints; // 정면에서 -z로 오는 차량
     
