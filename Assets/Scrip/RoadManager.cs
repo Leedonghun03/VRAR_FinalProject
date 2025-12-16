@@ -77,6 +77,11 @@ public class RoadManager : MonoBehaviour
             return;
         }
         
+        if (BuildingManager.Instance)
+        {
+            BuildingManager.Instance.SetupBuildingsOnTile(tile);
+        }
+        
         // 초반 시작 구간은 차량 스폰 안되도록 설정
         if (isStart)
         {

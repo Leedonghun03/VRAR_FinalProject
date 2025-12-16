@@ -1566,11 +1566,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9d1ff16fbd9a84fbaeb39c8e07a148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrafficManager
-  carPrefab: {fileID: 6721860663023794127, guid: 1385a099088977948a75bbac8aa6671e, type: 3}
-  busPrefab: {fileID: 8641508338241254208, guid: adcf5ac7d7c13a3458924b907c6af2fd, type: 3}
+  carPrefabs:
+  - {fileID: 6721860663023794127, guid: 1385a099088977948a75bbac8aa6671e, type: 3}
+  - {fileID: 4832025704138508276, guid: 8b614ba92bdec5742b8a6711532a441e, type: 3}
+  - {fileID: 7862300618041947103, guid: a6f6a990acc1689459910944d8539f43, type: 3}
+  - {fileID: 264933803957486815, guid: 369cb5c9483b7244cb3010cd75845248, type: 3}
+  - {fileID: 8867955564250106190, guid: 99b1c9011339f8c49accfec5db70919e, type: 3}
+  busPrefabs:
+  - {fileID: 8641508338241254208, guid: adcf5ac7d7c13a3458924b907c6af2fd, type: 3}
+  - {fileID: 7369241106259408021, guid: 9cfb94f30e3f03f4d992d5554925de93, type: 3}
+  - {fileID: 5764752486314175484, guid: 8d25bf1b65e969e42804d4f290ba1e34, type: 3}
   player: {fileID: 764390920}
   forwardCarSpawnDistanceMin: 15
-  forwardCarSpawnDistanceMax: 40
+  forwardCarSpawnDistanceMax: 60
 --- !u!1 &1368730008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1875,50 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1538557865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538557867}
+  - component: {fileID: 1538557866}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1538557866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538557865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54de2796284b01478c794affcb37784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingManager
+--- !u!4 &1538557867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538557865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.94429, y: 0, z: 3.43668}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584613769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,3 +2175,4 @@ SceneRoots:
   - {fileID: 181873013}
   - {fileID: 2025737702}
   - {fileID: 1368730010}
+  - {fileID: 1538557867}
