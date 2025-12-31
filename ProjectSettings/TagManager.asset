@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Car
-  - Bus
+  - GoPoint
+  - teleport
+  - NpcGoPoint
   layers:
   - Default
   - TransparentFX
